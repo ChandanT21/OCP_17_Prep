@@ -159,15 +159,53 @@ but could not compile one. (Used in Java 8 and earlier)
 - Declaring Variable
   - State the variable type along with giving it a name
   - Giving a variable a value is called **Initializing** ex (`String name = "Chase";` or `int num = 3;`)
-  - 
+  - Rules for legal Identifiers:
+    - Must begin with a letter, a currency symbol, or underscore symbol
+    - Can include numbers but cannot start with them
+    - A single `_` is not allowed as an identifier
+    - Java reserved keywords cannot be used as identifier names (and don't use other variations of those words either)
+  - Additional recommendations:
+    - camelCase for methods()
+    - UPPERCASE_SNAKE_CASE for constants and enum values
+    - Declare and initialize multiple variables in the same statement if they are of the same type `String s1, s2, s3;`
+    `String s4 = "yes", s5 = "no";`
+- Initialize Variable
+  - `final` keyword can be applied to local variables and is equivalent to declaring constants; can't be changed.
+    - can also be applied to local variable references `final int[] nums = new int[10]; num[0] = 1;` `num = null; //DNC`
+  - Local variables do not have default value and therefore must be initialized before use; else compiler will error out
+  - Constructor and Method Parameters are pre-initialized variables
+  - Instance variable (field) is a value defined within a specific instance of an object; each instance has its own value;
+    not required to be initialized as they are given default values (`null` for objects)
+  - Class variable (field) is similar to an instance variable but the value is shared among all instances; contains the
+  keyword `static`; not required to be initialized as they are given default values (`null` for objects)
+  - `var` can be used instead of type when declaring local variables ONLY (ex. `var name = "Leo"; var size = 7;`)
+    - `var question; quesion = 1 \\DNC` - for type inference, the variables have to be initialized first
+    - `var n - null \\DNC` - not allowed as var can be any Object
+    - `public int add (var a, var b) { \\DNC` - method parameters are not local variables (DNC - w/ constructors)
+    - `var` is not a reserved word and allowed to be used as an identifier
 
+
+- Managing Variable Scope
+  - Local Variable - from declaration until the code block they are defined in ends
+  - Method Variable - duration of the method
+  - Instance Variable - available as soon as they are defined and last until the life-time of the object (Garbage Collection)
+  - Class (static) Variable - go into scope when defined and last until the life-time of the program
+- Destroying Objects
+  - All objects are stored in your program memory heap
+  - Garbage Collection (GC) - eligble when an object's state of no longer being accessible ina  program and therefore 
+  able to be GC-ed
+    - Not immediately GC-ed (or even guaranteed that it would do it)
+  - An object is no longer reachable when the following situation occurs:
+    - The object no longer has any reference pointing to it
+    - All references to the object have gone out of scope
 
 ---
 ### Keywords:
 - **Classes**: _the basic building blocks with defined parts and characteristics_
-- **Object**: _runtime instance of a class in memory; often referred to as an instance of 
-a class in memory_
-- **Reference**: _a variable that points to an object_
+- **Object**: _runtime instance of a class in memory; often referred to as an instance of a class in memory; sits on a 
+heap and has no name; come in varying shapes and sizes; cannot be assigned another object; gets Garbage collected_
+- **Reference**: _a variable that points to an object; can be assigned to another reference; has a name and is used to 
+access contents of an object; all are the same size no matter the type; can be passed and returned from a method_
 - **Field** (variable): _holds the state of the program_
 - **Method** (function or procedure): _operate on the state_
 - **Keyword**: _word with special meaning (ex. public, class, etc.)_
@@ -189,6 +227,8 @@ where the variable is allocated_
 - **Reference Data Type**: _refers to an object (an instance of a class); a reference points to an object by storing 
 the memory address where the object is located (concept referred to as **pointer**)_
 - **Variable**: _a name for a piece of memory that stores data_
+- **Heap**: _large pool of unused memory allocated to your Java app_
+- **Garbage Collection**: _the process of automatically freeing memory on the heap by deleting objects that are no longer reachable in your program_
 
 ---
 ### Questions:
